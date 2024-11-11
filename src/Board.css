@@ -1,0 +1,31 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px); /* 8 columns, each 50px wide */
+    gap: 0;
+    border: 2px solid black; /* Chessboard border */
+  }
+  
+  .board-cell {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .board-cell.light {
+    background-color: #f0d9b5; /* Light square color */
+  }
+  
+  .board-cell.dark {
+    background-color: #b58863; /* Dark square color */
+  }
+  
+  .chess-piece {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .board-cell.highlight {
+    background-color: rgba(0, 255, 0, 0.3); /* Example highlight color */
+  }
