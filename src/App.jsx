@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <div>
-        <h1>Chess Game</h1>
       </div>
       <div className="card">
         <Board />

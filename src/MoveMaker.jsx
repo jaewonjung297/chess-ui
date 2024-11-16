@@ -16,7 +16,8 @@ function MoveMaker() {
     };
 
     try {
-      const response = await fetch('http://localhost:5001/api/make-move', {
+      const apiUrl = import.meta.env.VITE_SERVER_URL || 'http://localhost:5001'
+      const response = await fetch(`${apiUrl}/api/make-move`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

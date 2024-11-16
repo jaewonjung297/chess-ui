@@ -1,6 +1,6 @@
 import { useDrag } from 'react-dnd';
 
-function ChessPiece({ piece, rowIndex, colIndex }) {
+function ChessPiece({ piece, rowIndex, colIndex, isAnimating}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'CHESS_PIECE',
     item: { rowIndex, colIndex, piece },
@@ -9,14 +9,13 @@ function ChessPiece({ piece, rowIndex, colIndex }) {
     }),
   }));
 
-  if (piece === 'X') return null; // Do not render anything if the square is empty
-
+  if (piece === 'X') return null; 
   return (
     <img
       ref={drag} // Attach drag behavior ONLY to this img element
       src={`/${piece}.png`}
       alt={piece}
-      className="chess-piece"
+      className={'chess-piece'}
       style={{
         opacity: isDragging ? 0 : 1, // Hide the piece when dragging
         cursor: 'grab', // Add a grab cursor for better UX

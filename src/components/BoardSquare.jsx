@@ -1,6 +1,7 @@
 import { useDrop } from 'react-dnd';
 
-function BoardSquare({ rowIndex, colIndex, onDrop, children }) {
+
+function BoardSquare({ rowIndex, colIndex, onDrop, isSelected, children, onClick, isValidMove }) {
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'CHESS_PIECE',
     drop: (item) => onDrop(item, { rowIndex, colIndex }),
@@ -8,15 +9,17 @@ function BoardSquare({ rowIndex, colIndex, onDrop, children }) {
       isOver: !!monitor.isOver(),
     }),
   }));
-
+  
   return (
     <div
-      ref={drop} // Attach drop behavior to the square
+    onClick={onClick}
+      ref={drop}
       className={`board-cell ${(rowIndex + colIndex) % 2 === 0 ? 'light' : 'dark'} ${
         isOver ? 'highlight' : ''
-      }`}
+      } ${isSelected ? 'selected' : ''}`} 
     >
-      {children} {/* Render the piece as a child */}
+      {children}
+      {isValidMove && <div className="valid-move-dot"></div>}
     </div>
   );
 }
